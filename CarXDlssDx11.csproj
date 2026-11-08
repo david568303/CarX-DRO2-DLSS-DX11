@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <AssemblyName>CarXDlssDx11</AssemblyName>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+  <Target Name="RequireGameReferences" BeforeTargets="ResolveAssemblyReferences">
+    <Error Condition="'$(CarXGameDirectory)' == ''" Text="Set CarXGameDirectory to your CarX Drift Racing Online 2 installation." />
+    <Error Condition="!Exists('$(CarXGameDirectory)\BepInEx\interop\RenderCore.Runtime.dll')" Text="Run the game with BepInEx once to generate its interop assemblies." />
+  </Target>
+  <ItemGroup>
+    <Reference Include="BepInEx.Core" HintPath="$(CarXGameDirectory)\BepInEx\core\BepInEx.Core.dll" Private="false" />
+    <Reference Include="BepInEx.Unity.IL2CPP" HintPath="$(CarXGameDirectory)\BepInEx\core\BepInEx.Unity.IL2CPP.dll" Private="false" />
+    <Reference Include="0Harmony" HintPath="$(CarXGameDirectory)\BepInEx\core\0Harmony.dll" Private="false" />
+    <Reference Include="Il2CppInterop.Runtime" HintPath="$(CarXGameDirectory)\BepInEx\core\Il2CppInterop.Runtime.dll" Private="false" />
+    <Reference Include="Il2Cppmscorlib" HintPath="$(CarXGameDirectory)\BepInEx\interop\Il2Cppmscorlib.dll" Private="false" />
+    <Reference Include="UnityEngine.CoreModule" HintPath="$(CarXGameDirectory)\BepInEx\interop\UnityEngine.CoreModule.dll" Private="false" />
+    <Reference Include="UnityEngine.NVIDIAModule" HintPath="$(CarXGameDirectory)\BepInEx\interop\UnityEngine.NVIDIAModule.dll" Private="false" />
+    <Reference Include="Unity.RenderPipelines.Core.Runtime" HintPath="$(CarXGameDirectory)\BepInEx\interop\Unity.RenderPipelines.Core.Runtime.dll" Private="false" />
+    <Reference Include="RenderCore.Runtime" HintPath="$(CarXGameDirectory)\BepInEx\interop\RenderCore.Runtime.dll" Private="false" />
+  </ItemGroup>
+</Project>
